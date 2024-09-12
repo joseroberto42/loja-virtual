@@ -1,0 +1,12 @@
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaço entre os cards */
+    justify-content: space-around; /* Distribuição dos cards */
+  }
+  
+  .card-row .card {
+    flex: 1 1 18rem; /* Ajusta o card para ter uma largura mínima */
+  }
+  
+  

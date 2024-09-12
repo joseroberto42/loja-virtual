@@ -1,0 +1,89 @@
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Cria 4 colunas de tamanho igual */
+     /* Espaço entre os cards */
+    padding: 20px;
+  }
+  
+  @media (max-width: 1200px) {
+    .product-list {
+      grid-template-columns: repeat(4, 1fr); /* 3 colunas em telas menores */
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .product-list {
+      grid-template-columns: repeat(3, 1fr); /* 2 colunas em tablets */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .product-list {
+      grid-template-columns: (2,1fr); /* 1 coluna em dispositivos móveis */
+    }
+  }
+  
+  /* Estilo para o contêiner de lista de produtos */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaçamento entre os cartões */
+    justify-content: center; /* Centraliza os cartões horizontalmente */
+  }
+  
+  /* Estilo para o cartão do produto */
+  .product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Bordas arredondadas mais suaves */
+    overflow: hidden; /* Garante que a imagem não ultrapasse as bordas */
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra mais proeminente */
+    max-width: 250px; /* Limita a largura máxima do cartão */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para efeito de hover */
+  }
+  
+  /* Efeito de hover para o cartão */
+  .product-card:hover {
+    transform: translateY(-5px); /* Move o cartão para cima */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada no hover */
+  }
+  
+  /* Estilo para a imagem do cartão */
+  .card-img-top {
+    width: 100%;
+    height: 180px; /* Altura fixa para a imagem */
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço */
+    border-radius: 8px 8px 0 0; /* Arredondar apenas os cantos superiores */
+    margin-bottom: 16px; /* Espaçamento abaixo da imagem */
+  }
+  
+  /* Estilo para o corpo do cartão */
+  .card-body {
+    padding: 8px 0; /* Espaçamento interno do corpo do cartão */
+  }
+  
+  /* Título do cartão */
+  .card-title {
+    font-size: 1.25rem;
+    margin: 8px 0;
+    color: #333; /* Cor do texto */
+  }
+  
+  /* Descrição do cartão */
+  .card-text {
+    font-size: 1rem;
+    color: #666; /* Cor do texto */
+    margin: 8px 0;
+    line-height: 1.4; /* Altura da linha para melhor legibilidade */
+  }
+  
+  /* Preço do cartão */
+  .card-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745; /* Cor verde para o preço */
+  }
+  
