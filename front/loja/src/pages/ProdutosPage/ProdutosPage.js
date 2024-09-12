@@ -2,8 +2,11 @@
 import React, { useState } from 'react';
 import ProductList from '../../componentes/ProductList';
 import ProductForm from '../../componentes/ProductForm';
+import ProductEditForm from '../../componentes/ProductEditForm';
 import axios from 'axios';
 import Navbar from '../../componentes/navbar';
+import ProductDelete from '../../componentes/ProductDelete';
+import ProductTable from '../../componentes/ProductTable';
 const ProductPage = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [refresh, setRefresh] = useState(false);
@@ -30,6 +33,9 @@ const ProductPage = () => {
     <div>
         <Navbar></Navbar>
       <ProductForm productToEdit={editingProduct} onSave={handleSave} />
+      <ProductEditForm></ProductEditForm>
+        <ProductDelete></ProductDelete>
+        <ProductTable></ProductTable>
       <ProductList onEdit={handleEdit} onDelete={handleDelete} />
     </div>
   );

@@ -1,0 +1,101 @@
+/* Estilização do formulário principal */
+.product-edit-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Título do formulário */
+  .product-edit-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Estilização dos grupos de campos */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* Estilo para os campos de input e textarea */
+  .input-field, .textarea-field {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-field:focus, .textarea-field:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  /* Área de texto redimensionável */
+  .textarea-field {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  /* Botão de carregar produto */
+  .fetch-btn {
+    background-color: #17a2b8;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .fetch-btn:hover {
+    background-color: #138496;
+  }
+  
+  /* Botão de atualizar */
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para campos obrigatórios */
+  input[required]:focus, textarea[required]:focus {
+    border-color: #28a745;
+  }
+  
+  /* Layout responsivo para dispositivos móveis */
+  @media (max-width: 768px) {
+    .product-edit-form {
+      padding: 15px;
+    }
+    
+    .submit-btn, .fetch-btn {
+      font-size: 14px;
+    }
+  }
+  

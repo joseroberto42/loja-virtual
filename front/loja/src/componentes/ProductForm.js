@@ -1,64 +1,111 @@
-// src/components/ProductForm.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import './ProductForm.css'; // Importa a estilização
 
-const ProductForm = ({ productToEdit, onSave }) => {
+const ProductForm = ({ onSave }) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-
-  useEffect(() => {
-    if (productToEdit) {
-      setName(productToEdit.name);
-      setPrice(productToEdit.price);
-      setDescription(productToEdit.description);
-      setImageUrl(productToEdit.imageUrl);
-    }
-  }, [productToEdit]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Inicia o estado de carregamento
+    setMessage('');
+
+    // Validações básicas
+    if (price <= 0) {
+      setMessage('Price must be a positive number.');
+      setLoading(false);
+      return;
+    }
+
     const productData = { name, price, description, imageUrl };
 
     try {
-      if (productToEdit) {
-        await axios.put(`http://localhost:3003/api/products/${productToEdit.id}`, productData);
-        console.log("")
-      } else {
-        await axios.post('http://localhost:3003/api/products', productData);
-        console.log("")
-        
-      }
-      onSave();
+      await axios.post('http://localhost:3003/api/products', productData);
+      setMessage('Product added successfully.');
+      setName(''); // Limpa os campos após o envio
+      setPrice('');
+      setDescription('');
+      setImageUrl('');
+      onSave(); // Notifica o componente pai que o produto foi salvo
     } catch (error) {
-      console.error('Failed to save product', error);
+      setMessage('Failed to add product. Please try again.');
+      console.error('Failed to add product', error);
+    } finally {
+      setLoading(false); // Finaliza o estado de carregamento
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{productToEdit ? 'Edit Product' : 'Add Product'}</h2>
-      <div>
-        <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+    <form className="product-form" onSubmit={handleSubmit}>
+      <h2>Add Product</h2>
+      <div className="form-group">
+        <label htmlFor="name">Name:</label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="input-field"
+          disabled={loading}
+          aria-describedby="name-helper"
+        />
       </div>
-      <div>
-        <label>Price:</label>
-        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
+      <div className="form-group">
+        <label htmlFor="price">Price:</label>
+        <input
+          id="price"
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
+          className="input-field"
+          disabled={loading}
+          aria-describedby="price-helper"
+        />
       </div>
-      <div>
-        <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
+      <div className="form-group">
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+          className="textarea-field"
+          disabled={loading}
+          aria-describedby="description-helper"
+        />
       </div>
-      <div>
-        <label>Image URL:</label>
-        <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
+      <div className="form-group">
+        <label htmlFor="imageUrl">Image URL:</label>
+        <input
+          id="imageUrl"
+          type="text"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+          required
+          className="input-field"
+          disabled={loading}
+          aria-describedby="imageUrl-helper"
+        />
       </div>
-      <button type="submit">Save</button>
+      <button type="submit" className="submit-btn" disabled={loading}>
+        {loading ? 'Saving...' : 'Add Product'}
+      </button>
+      {message && (
+        <p className={`feedback-message ${message.includes('Failed') ? 'error' : 'success'}`}>
+          {message}
+        </p>
+      )}
     </form>
   );
 };
 
 export default ProductForm;
+
 
