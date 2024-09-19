@@ -7,7 +7,7 @@ const ProductList = () => {
 
   useEffect(() => {
     // Chamando a API para pegar os produtos
-    fetch('http://localhost:3003/api/products')
+    fetch('http://localhost:3005/api/products')
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(error => console.error('Erro ao buscar produtos:', error));

@@ -19,7 +19,7 @@ const ProductDelete = ({ onDelete }) => {
       setError(null); // Limpa mensagens de erro anteriores
       setSuccess(false); // Limpa mensagem de sucesso anterior
       try {
-        await axios.delete(`http://localhost:3003/api/products/${productId}`);
+        await axios.delete(`http://localhost:3005/api/products/${productId}`);
         onDelete();
         setProductId('');
         setSuccess(true); // Define sucesso após exclusão

@@ -6,7 +6,7 @@ import productRoutes from './routes/products';
 import userRoutes from './routes/auth';
 
 const app = express();
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3005;
 
 // Middlewares
 app.use(cors());

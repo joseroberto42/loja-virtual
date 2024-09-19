@@ -12,7 +12,7 @@ const ProductEditForm = ({ onSave }) => {
   // Função que carrega os dados do produto a ser editado com base no ID informado
   const fetchProductById = async () => {
     try {
-      const response = await axios.get(`http://localhost:3003/api/products/${productId}`);
+      const response = await axios.get(`http://localhost:3005/api/products/${productId}`);
       const product = response.data;
       setName(product.name);
       setPrice(product.price);
@@ -35,7 +35,7 @@ const ProductEditForm = ({ onSave }) => {
     const updatedProduct = { name, price, description, imageUrl };
 
     try {
-      await axios.put(`http://localhost:3003/api/products/${productId}`, updatedProduct);
+      await axios.put(`http://localhost:3005/api/products/${productId}`, updatedProduct);
       onSave(); // Chama a função de callback para notificar que o produto foi salvo
     } catch (error) {
       console.error('Failed to edit product', error);

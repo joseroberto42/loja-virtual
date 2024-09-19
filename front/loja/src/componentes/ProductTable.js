@@ -10,7 +10,7 @@ const ProductTable = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3003/api/products');
+        const response = await axios.get('http://localhost:3005/api/products');
         setProducts(response.data);
       } catch (error) {
         setError('Failed to fetch products.');

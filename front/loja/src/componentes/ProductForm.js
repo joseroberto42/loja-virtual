@@ -25,7 +25,7 @@ const ProductForm = ({ onSave }) => {
     const productData = { name, price, description, imageUrl };
 
     try {
-      await axios.post('http://localhost:3003/api/products', productData);
+      await axios.post('http://localhost:3005/api/products', productData);
       setMessage('Product added successfully.');
       setName(''); // Limpa os campos após o envio
       setPrice('');
